@@ -21,6 +21,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.zhanatpaeva.weatherdashboard02.ui.theme.WeatherDashboard02Theme
 import com.zhanatpaeva.weatherdashboard02.viewmodel.WeatherViewModel
+import androidx.compose.material3.OutlinedButton
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,6 +93,14 @@ fun WeatherDashboardScreen(
             enabled =  !weatherState.isLoading
         ) {
             Text(text = if (weatherState.isLoading) "Loading..." else "Refresh Weather")
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedButton(
+            onClick = {
+                viewModel.toggleErrorSimulation()
+            }
+        ) {
+            Text(text = "Simulare Error")
         }
         if (weatherState.error !=null){
             Spacer(modifier = Modifier.height(16.dp))
