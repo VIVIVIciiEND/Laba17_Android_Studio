@@ -100,6 +100,14 @@ fun WeatherDashboardScreen(
                 style = MaterialTheme.typography.bodyMedium
             )
         }
+        if (weatherState.loadingProgress.isNotEmpty()){
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = weatherState.loadingProgress ,
+                style = MaterialTheme.typography.bodyMedium ,
+                color = MaterialTheme.colorScheme.secondary
+            )
+        }
     }
 }
 @Composable
